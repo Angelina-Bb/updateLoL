@@ -4,5 +4,5 @@ from AppLOL import views
 urlpatterns = [
     path("", views.inicio) ,
     path("items/", views.items) ,
-    path("campenes/", views.campeones) ,
+    path("campeones/", views.campeones) ,
 ]
