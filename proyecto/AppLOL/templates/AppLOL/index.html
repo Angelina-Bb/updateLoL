@@ -1,187 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-
-        {% load static %}
-
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Resume - Start Bootstrap Theme</title>
-        <link rel="icon" type="image/x-icon" href='{% static "AppLOL/assets/img/HEIMER.jpg" %}' />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href='{% static "AppLOL/css/styles.css" %}' rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span class="d-block d-lg-none">League Of Update</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-HEIMER rounded-circle mx-auto mb-2" src='{% static "AppLOL/assets/img/HEIMER.jpg" %}' alt="..." /></span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Jungla</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Items</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Campeones</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Comunidad</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#login">Login</a></li>
-                
-                </ul>
-            </div>
-        </nav>
+{% extends 'AppLOL/base.html' %}
+{% block contenido %}
         <!-- Page Content-->
         <div class="container-fluid p-0">
             <!-- About-->
             <section class="resume-section" id="about">
                 <div class="resume-section-content">
                     <h1 class="mb-0">
-                       LEAGUE OF
+                    LEAGUE OF
                         <span class="text-primary">UPDATE</span>
                     </h1>
                     <div class="subheading mb-5">
                         Update 12.22
-                     
                     </div>
                     <p class="lead mb-5">Nos dedicamos a informar de forma mas detallada las actualizaciones mas recientes del MOBA en cuestion ya sea items y campeones hasta las modficaciones del mapa.</p>
-                    <div class="social-icons">       
-                       
-                         <button class="enlace social-icon" role="link" onclick="window.location='https://github.com/AgustinLara/LEAGUEOFUBDATE.git'" ><i class="fab fa-github"></i></button>
-                         <button class="enlace social-icon" role="link" onclick="window.location='https://twitter.com/riotgames?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'" ><i class="fab fa-twitter"></i></button>
-                         <button class="enlace social-icon" role="link" onclick="window.location='https://www.facebook.com/RiotGames/'" ><i class="fab fa-facebook-f"></i></button>
-                       
+                    <div class="social-icons">
+                        <button class="enlace social-icon" role="link" onclick="window.location='https://github.com/AgustinLara/LEAGUEOFUBDATE.git'" ><i class="fab fa-github"></i></button>
+                        <button class="enlace social-icon" role="link" onclick="window.location='https://twitter.com/riotgames?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'" ><i class="fab fa-twitter"></i></button>
+                        <button class="enlace social-icon" role="link" onclick="window.location='https://www.facebook.com/RiotGames/'" ><i class="fab fa-facebook-f"></i></button>
                     </div>
-                </div><i class="fab fa-github"></i>
             </section>
-            <hr class="m-0" />
-            <!-- Experience-->
-            <section class="resume-section" id="experience">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">Update 12.22 </h2>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Cambios en la JUNGLA</h3>
-                            <div class="subheading mb-3">Mascotas</div>
-                            <p>Se agregaron 3 nuevos tipos de smite que varian dependiendo de la mascota q selecciones al comienzo de la partida los cuales son "Cachorro de Rasgafuego - Cria de Trotabrisa - Retoño de Pisamusgo" lo cual genero revuelo en los jugadores ¿Pokemon eres tu?</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Smite</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Cachorro de Rasgafuego</h3>
-                            <div class="subheading mb-3">Primera FASE</div>
-                            <p>Corte de Rasgafuegos: Rasgafuegos juntará acumulaciones de Brasas a un ritmo de 3 acumulaciones cada 0.5 seg o 100 acumulaciones al matar a un monstruo grande. Al alcanzar 100 acumulaciones de Brasas, tu siguiente instancia de daño contra un campeón enemigo ralentizará un 30% a todos los enemigos en un radio de 250 unidades (disminuyendo a lo largo de 2 seg) e infligirá al objetivo principal un daño de quemadura igual al 5% de su Vida Máxima como daño verdadero a lo largo de 4 seg</p>
-                            <div class="subheading mb-3">Segunda FASE</div>
-                            <P>El smite pasara a quitar 1200 de vida a mounstros y obtendra la Mejora de protección: Recibe un 30% menos de daño de monstruos si hay al menos 2 aliados en un radio de 1300 unidades</P>
-                        
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Smite ROJO</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Retoño de Pisamusgo</h3>
-                            <div class="subheading mb-3">Primera FASE</div>
-                            <p>Coraje de Pisamusgo: Obtienes un escudo de 75-330 de Vida (según el nivel) después de despejar un campamento de monstruos o después de 10 seg fuera de combate. Este escudo permanecerá de forma indefinida. Los jugadores obtendrán un 20% de Tenacidad y resistencia a la ralentización mientras el escudo esté activo y por 3 seg después de romperse.</p>
-                            <div class="subheading mb-3">Segunda FASE</div>
-                            <p>El smite pasara a quitar 1200 de vida a mounstros y obtendra la Mejora de protección: Recibe un 30% menos de daño de monstruos si hay al menos 2 aliados en un radio de 1300 unidades</p>
-                       
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Smite VERDE</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Cria de Trotabrisa</h3>
-                            <div class="subheading mb-3">Primera FASE</div>
-                            <p>Paso de Trotabrisas: Obtienes un 45% de velocidad de movimiento adicional al entrar en una maleza que decae a lo largo de 2 seg después de salir de ella. Esto aumenta al 60% durante 2 seg después de matar a un monstruo grande</p>
-                            <div class="subheading mb-3">Segunda FASE</div>
-                            <p>El smite pasara a quitar 1200 de vida a mounstros y obtendra la Mejora de protección: Recibe un 30% menos de daño de monstruos si hay al menos 2 aliados en un radio de 1300 unidades</p>
-                        
-                        
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Smite Azul</span></div>
-                    </div>
-                    
-                </div>
-            </section>
-            <hr class="m-0" />
-            <!-- Education-->
-            <section class="resume-section" id="education">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">items</h2>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">University of Colorado Boulder</h3>
-                            <div class="subheading mb-3">Bachelor of Science</div>
-                            <div>Computer Science - Web Development Track</div>
-                            <p>GPA: 3.23</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">August 2006 - May 2010</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">James Buchanan High School</h3>
-                            <div class="subheading mb-3">Technology Magnet Program</div>
-                            <p>GPA: 3.56</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Auat 2002 - May 2006</span></div>
-                    </div>
-                </div>
-            </section>
-            <hr class="m-0" />
-            <!-- Skills-->
-            <section class="resume-section" id="skills">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">BUFF and NERF</h2>
-                    <div class="subheading mb-3">BUFF</div>
-                    <ul class="fa-ul mb-0">
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Mobile-First, Responsive Design
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Cross Browser Testing & Debugging
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Cross Functional Teams
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Agile Development & Scrum
-                        </li>
-                    </ul>
-                   
-                    <div class="subheading mb-3">NERF</div>
-                    <ul class="fa-ul mb-0">
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Mobile-First, Responsive Design
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Cross Browser Testing & Debugging
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Cross Functional Teams
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Agile Development & Scrum
-                        </li>
-                    </ul>
-                </div>
-            </section>
-            <hr class="m-0" />
             <!-- Interests-->
             <section class="resume-section" id="interests">
                 <div class="resume-section-content">
@@ -193,10 +30,4 @@
         </div>
         <section>
         <hr class="m-0" />
-
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src='{% static "AppLOL/js/scripts.js" %}></script>
-    </body>
-</html>
+{% endblock %}
