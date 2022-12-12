@@ -1,4 +1,4 @@
-# GRUPO #15
+# Hola! :wave: somos el grupo #15
 
 Entrega final para el curso de Python en Coderhouse.
 
