@@ -7,8 +7,8 @@ Entrega final para el curso de Python en Coderhouse.
 ### Angelina Balatorre: 
 
 Encargada de armar la estructura de los templates, crud.
---
+
 ### Ariel Fernandez: 
 
-Se encargo de darle uso a todos los botosnes y salucionar algunos problemas con la base de dato.
+Se encargo de darle uso a todos los botones y solucionar algunos problemas con la base de dato.
 
