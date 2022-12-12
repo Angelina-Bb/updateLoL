@@ -8,10 +8,16 @@ from django.contrib.auth import login, logout, authenticate
 
 def inicio(request):
     return render(request,"AppLOL/index.html")
-def items(request):
-    return HttpResponse("Los cambios de los items")
+def about(request):
+    return render(request,"AppLOL/about.html")
+def updates(request):
+    return render(request,"AppLOL/actualizaciones.html")
 def campeones(request):
-    return HttpResponse("Buffeos y Nerfeos")
+    return render(request,"AppLOL/campeones.html")
+def comunidad(request):
+    return render(request,"AppLOL/comunidad.html")
+def chat(request):
+    return render(request,"AppLOL/chat.html")
 
 def login_request(request):
     if request.method == "POST":
