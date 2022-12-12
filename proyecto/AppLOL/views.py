@@ -18,6 +18,10 @@ def comunidad(request):
     return render(request,"AppLOL/comunidad.html")
 def chat(request):
     return render(request,"AppLOL/chat.html")
+def register(request):
+    return render(request,"AppLOL/register.html")
+def profile(request):
+    return render(request,"AppLOL/profile.html")
 
 def login_request(request):
     if request.method == "POST":
@@ -34,4 +38,4 @@ def login_request(request):
         else:
             return render(request, {"mensaje":f"Error, formulario erroneo"})
     form = AuthenticationForm()
-    return render(request,'AppLOL/index.html' , {"form":form})
+    return render(request,'AppLOL/login.html' , {"form":form})
