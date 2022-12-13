@@ -1,4 +1,23 @@
 {% extends 'AppLOL/base.html' %}
 {% block contenido %}
 
+{% if errors %}
+    <p style="color:red">Errores en el registro de usuario: {{errors}}</p>
+{% endif %}
+
+<section class="resume-section" id="interests">
+    <div class="resume-section-content">
+        <h2 class="mb-5">Registro de Usuario</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+        
+            <input type="submit" value="Registrar Usuario">
+            
+        </form>
+    </div>
+</section>
+
 {% endblock %}
+
+
