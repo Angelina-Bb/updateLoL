@@ -1,12 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-# Updates
-from .models import Post
-# Login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-# Create your views here.
+from .models import Post
+
+from AppLOL.forms import *
+
 
 def inicio(request):
     return render(request,"AppLOL/index.html")
@@ -43,3 +43,17 @@ def login_request(request):
             return render(request, {"mensaje":f"Error, formulario erroneo"})
     form = AuthenticationForm()
     return render(request,'AppLOL/login.html' , {"form":form})
+
+def registrar_usuario(request):
+
+    if request.method == "POST":
+        formulario = UserRegisterForm(request.POST)
+
+        if formulario.is_valid():
+            formulario.save()
+            return redirect("inicio")
+        else:
+            return render(request, "AppLOL/register.html", {"form": formulario, "errors": formulario.errors})
+
+    formulario = UserRegisterForm()
+    return render(request,"AppLOL/register.html", {"form": formulario})
