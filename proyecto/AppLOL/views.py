@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+# Updates
+from .models import Post
 # Login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
@@ -11,7 +13,9 @@ def inicio(request):
 def about(request):
     return render(request,"AppLOL/about.html")
 def updates(request):
-    return render(request,"AppLOL/actualizaciones.html")
+    posts = Post.objects.all()
+
+    return render(request,"AppLOL/actualizaciones.html", {'posts': posts})
 def campeones(request):
     return render(request,"AppLOL/campeones.html")
 def comunidad(request):

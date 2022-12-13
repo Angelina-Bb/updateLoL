@@ -6,25 +6,20 @@
                     <h2 class="mb-5">Update 12.22 </h2>
                                 <!-- Cuadros de texto -->
                                 <div class="row" >
-                                    <div class="col-lg-3 mb-4">
-                                        <div class="card bg-light text-black">
-                                            <div class="card-body">
-                                                <h3 class="mb-0">Cambios en la JUNGLA</h3>
-                                                <div class="subheading mb-3">Mascotas</div>
-                                                <p>Se agregaron 3 nuevos tipos de smite que varian dependiendo de la mascota q selecciones al comienzo de la partida los cuales son "Cachorro de Rasgafuego - Cria de Trotabrisa - Retoño de Pisamusgo" lo cual genero revuelo en los jugadores ¿Pokemon eres tu?</p>
-                                                <div class="flex-shrink-0"><span class="text-primary">Smite</span></div>
+                                    {% for post in posts %}
+                                        <div class="col-lg-4 mb-4">
+                                            <div class="card bg-light text-black">
+                                                <div class="card-body">
+                                                    <h3 class="mb-0">{{ post.title }}</h3>
+                                                    <div class="subheading mb-3">{{ post.subtitle}}</div>
+                                                    <p>{{ post.body }}</p>
+                                                    <div class="flex-shrink-0"><span class="text-primary">{{ post.creator }}</span></div>
+                                                    <div class="flex-shrink-0"><span class="text-primary">{{ post.created_at|date:'d-m-Y H:i' }}</span></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <div class="card bg-light text-black">
-                                            <div class="card-body">
-                                                Light
-                                                <div class="text-black-50 small">#f8f9fc</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
+                                    {% endfor %}
+                                    <div class="col-lg-4 mb-4">
                                         <div class="card bg-light text-black">
                                             <div class="card-body">
                                                 Light
@@ -32,7 +27,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 mb-4">
+                                    <div class="col-lg-4 mb-4">
+                                        <div class="card bg-light text-black">
+                                            <div class="card-body">
+                                                Light
+                                                <div class="text-black-50 small">#f8f9fc</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 mb-4">
                                         <div class="card bg-light text-black">
                                             <div class="card-body">
                                                 Light
