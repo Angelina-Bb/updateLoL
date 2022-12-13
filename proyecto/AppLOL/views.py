@@ -1,15 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-<<<<<<< HEAD
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-=======
-# Updates
-from .models import Post
-# Login
-from django.contrib.auth.forms import AuthenticationForm
->>>>>>> 83f22dd5e08b32bd89109d1104662923ee7a7d17
 from django.contrib.auth import login, logout, authenticate
+
+from .models import Post
 
 from AppLOL.forms import *
 
@@ -20,14 +15,10 @@ def about(request):
     return render(request,"AppLOL/about.html")
 
 def updates(request):
-<<<<<<< HEAD
-    return render(request,"AppLOL/actualizaciones.html")
-
-=======
     posts = Post.objects.all()
 
     return render(request,"AppLOL/actualizaciones.html", {'posts': posts})
->>>>>>> 83f22dd5e08b32bd89109d1104662923ee7a7d17
+
 def campeones(request):
     return render(request,"AppLOL/campeones.html")
 
