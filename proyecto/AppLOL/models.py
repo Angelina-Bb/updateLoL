@@ -12,8 +12,9 @@ class Category(models.Model):
 class Post(models.Model):
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
+    slug = models.SlugField()
     subtitle = models.CharField(max_length=200)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     body = models.TextField()
     creator = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -26,6 +27,9 @@ class Comment(models.Model):
     email = models.EmailField()
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.username
 
 class Comunidad(models.Model):
     title = models.CharField(max_length=200)
