@@ -19,21 +19,7 @@ def about(request):
 def updates(request):
     posts = Post.objects.all()
 
-    post = get_list_or_404(Post)
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
-
-            return redirect('post_detail')
-    else:
-        form = CommentForm()
-
-    return render(request,"AppLOL/actualizaciones.html", {'posts': posts, 'form': form})
-
-#    return render(request,"AppLOL/actualizaciones.html", {'posts': posts})
+    return render(request,"AppLOL/actualizaciones.html", {'posts': posts})
 
 def campeones(request):
     return render(request,"AppLOL/campeones.html")

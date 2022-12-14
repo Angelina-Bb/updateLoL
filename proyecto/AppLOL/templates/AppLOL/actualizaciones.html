@@ -3,16 +3,20 @@
 <!-- Experience-->
             <section class="resume-section" id="experience">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Update 12.22 </h2>
+                    <h2 class="mb-5">Actualizaciones</h2>
                                 <!-- Cuadros de texto -->
                                 <div class="row" >
                                     {% for post in posts %}
-                                        <div class="col-lg-4 mb-4">
+                                        <div class="col-lg-6 mb-4">
                                             <div class="card bg-light text-black">
                                                 <div class="card-body">
                                                     <h3 class="mb-0">{{ post.title }}</h3>
                                                     <div class="subheading mb-3">{{ post.subtitle }}</div>
-                                                    {{ post.image }}
+                                                    {% if post.image %}
+                                                        <figure class="image">
+                                                            <img src="{{ post.image.url }}">
+                                                        </figure>
+                                                    {% endif %}
                                                     <p>{{ post.body }}</p>
                                                     <p><small>{{ post.category }}</small></p>
                                                     <div class="flex-shrink-0"><span class="text-primary">{{ post.creator }}</span></div>
@@ -43,7 +47,7 @@
                                         </div>
                                         
                                     {% endfor %}
-                                    <div class="col-lg-4 mb-4">
+                                    <div class="col-lg-6 mb-4">
                                         <div class="card bg-light text-black">
                                             <div class="card-body">
                                                 Light
@@ -51,7 +55,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 mb-4">
+                                    <div class="col-lg-6 mb-4">
                                         <div class="card bg-light text-black">
                                             <div class="card-body">
                                                 Light
@@ -59,7 +63,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 mb-4">
+                                    <div class="col-lg-6 mb-4">
                                         <div class="card bg-light text-black">
                                             <div class="card-body">
                                                 Light
