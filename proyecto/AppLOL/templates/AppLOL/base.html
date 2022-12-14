@@ -33,10 +33,14 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'updates'%}">Actualizaciones</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'campeones'%}">Campeones</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'comunidad'%}">Comunidad</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'login'%}">Login</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'register'%}">Sign up</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'profile'%}">Perfil</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'chat'%}">Chat</a></li>
+                    {% if not user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'login'%}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'register'%}">Sign up</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'logout'%}">Logout</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>

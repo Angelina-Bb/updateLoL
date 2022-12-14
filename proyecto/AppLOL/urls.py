@@ -1,5 +1,6 @@
 from django.urls import path
 from AppLOL import views
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path("", views.inicio, name="inicio"),
@@ -9,6 +10,7 @@ urlpatterns = [
     path("comunidad/", views.comunidad, name="comunidad"),
     path("chat/", views.chat, name="chat"),
     path("accounts/login/", views.login_request, name="login"),
+    path("accounts/logout/", LogoutView.as_view(), name="logout"),
     path("accounts/signup/", views.registrar_usuario, name="register"),
     path("accounts/profile/", views.profile, name="profile"),
 ]

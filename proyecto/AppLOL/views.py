@@ -64,6 +64,11 @@ def register(request):
 def profile(request):
     return render(request,"AppLOL/profile.html")
 
+def my_view(request):
+    username = None
+    if request.user.is_authenticated():
+        username = request.user.username
+
 def login_request(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data = request.POST)
@@ -71,15 +76,15 @@ def login_request(request):
             usuario = form.cleaned_data.get('username')
             contra = form.cleaned_data.get('password')
             user = authenticate(username=usuario, password=contra)
+            print(user)
             if user is not None:
                 login(request, user)
-                return render(request, {"mensaje":f"Bienvenido {usuario}"})
-            else:
-                return render(request, {"mensaje":f"Error, datos incorrectos."})
+                return render(request, 'AppLOL/index.html', {"mensaje":f"Bienvenido {usuario}"})
         else:
-            return render(request, {"mensaje":f"Error, formulario erroneo"})
+            return render(request, 'AppLOL/login.html', {"form": form})
     form = AuthenticationForm()
     return render(request,'AppLOL/login.html' , {"form":form})
+
 
 def registrar_usuario(request):
 
@@ -94,3 +99,4 @@ def registrar_usuario(request):
 
     formulario = UserRegisterForm()
     return render(request,"AppLOL/register.html", {"form": formulario})
+
