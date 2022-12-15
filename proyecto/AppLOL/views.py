@@ -16,18 +16,10 @@ def inicio(request):
 def about(request):
     return render(request,"AppLOL/about.html")
 
-def updates(request):
+def updates(request, slug):
     posts = Post.objects.all()
 
-    return render(request,"AppLOL/actualizaciones.html", {'posts': posts})
-
-def campeones(request):
-    return render(request,"AppLOL/campeones.html")
-
-def comunidad(request, slug):
-    posts = Post.objects.all()
-
-    post = get_list_or_404(Comunidad, slug=slug)
+    post = get_list_or_404(Post, slug=slug)
     if request.method == 'POST':
         form = CommentForm(request.POST)
         
@@ -39,13 +31,13 @@ def comunidad(request, slug):
     else:
         form = CommentForm()
 
-    return render(request,"AppLOL/comunidad.html", {'posts': posts, 'form': form})
+    return render(request,"AppLOL/actualizaciones.html", {'posts': posts, 'form': form})
+
+def campeones(request):
+    return render(request,"AppLOL/campeones.html")
 
 def chat(request):
     return render(request,"AppLOL/chat.html")
-
-def register(request):
-    return render(request,"AppLOL/register.html")
 
 def profile(request):
     return render(request,"AppLOL/profile.html")

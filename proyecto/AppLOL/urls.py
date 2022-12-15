@@ -9,7 +9,6 @@ urlpatterns = [
     path("about/", views.about, name="about"),
     path("actualizaciones/", views.updates, name="updates"),
     path("campeones/", views.campeones, name="campeones"),
-    path("comunidad/", views.comunidad, name="comunidad"),
     path("chat/", views.chat, name="chat"),
     path("accounts/login/", views.login_request, name="login"),
     path("accounts/logout/", LogoutView.as_view(), name="logout"),
