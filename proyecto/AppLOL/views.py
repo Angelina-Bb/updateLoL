@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_list_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 
 # Updates
@@ -19,19 +19,31 @@ def about(request):
 def updates(request, slug):
     posts = Post.objects.all()
 
-    post = get_list_or_404(Post, slug=slug)
+    return render(request,"AppLOL/actualizaciones.html", {'posts': posts})
+
+def detail(request, category_slug, slug):
+    posts = Post.objects.all()
+
+    post = get_object_or_404(Post, slug=slug)
     if request.method == 'POST':
         form = CommentForm(request.POST)
         
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
+            comment.save()
 
             return redirect('post_detail', slug=slug)
     else:
         form = CommentForm()
 
-    return render(request,"AppLOL/actualizaciones.html", {'posts': posts, 'form': form})
+    return render(request,"AppLOL/detail.html", {'posts': posts, 'form': form})
+
+def category(request, slug):
+    category = get_object_or_404
+
+    return render(request, 'AppLOL/category.html', {'category': category})
+
 
 def campeones(request):
     return render(request,"AppLOL/campeones.html")

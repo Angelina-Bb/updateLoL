@@ -1,0 +1,47 @@
+{% extends 'AppLOL/base.html' %}
+
+{% block title %}{{ post.title }} | {% endblock %}
+
+{% block content %}
+<section class="resume-section" id="experience">
+    <div class="resume-section-content">
+        <h2 class="mb-5">{{ post.title }}</h2>
+            <!-- Cuadros de texto -->
+                                <h3 class="mb-0">{{ post.subtitle }}</h3>
+                                <div class="subheading mb-3">{{ post.subtitle }}</div>
+                                {% if post.image %}
+                                    <figure class="image">
+                                        <img src="{{ post.image.url }}">
+                                    </figure>
+                                {% endif %}
+                                <p>{{ post.body }}</p>
+                                <p><small>{{ post.category }}</small></p>
+                                <div class="flex-shrink-0"><span class="text-primary">{{ post.creator }}</span></div>
+                                <div class="flex-shrink-0"><span class="text-primary">{{ post.created_at|date:'d-m-Y H:i' }}</span></div>
+                                <a href="{% url 'post_detail' post.slug %">Leer mas...</a>
+                                <!-- comentarios para comunidad -->
+                                <hr>
+
+                                <h2 class="subtittle is-4">Comentarios</h2>
+                                <form method="post" class="mb-6">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+
+                                    <div class="field">
+                                        <div class="control">
+                                            <button class="button is-success">Comentar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                {% for comment in post.comments.all %}
+                                <article class="media box">
+                                    <div class="media-content">
+                                        <strong>{{ comment.name }}</strong> <small>{{ comment.created_at|timesince }} ago</small><br>
+                                        {{ comment.body }}
+                                    </div>
+                                </article>
+                                {% endfor %}
+                            </div>
+    </div>
+</section>
+{% endblock %}
