@@ -12,7 +12,8 @@ urlpatterns = [
     path("comunidad/", views.comunidad, name="comunidad"),
     path("chat/", views.chat, name="chat"),
     path("accounts/login/", views.login_request, name="login"),
-    path("accounts/logout/", LogoutView.as_view(), name="logout"),
+    #path("accounts/logout/", LogoutView.as_view(), name="logout"),
+    path("accounts/logout/", LogoutView.as_view(template_name="AppLol/logout.html"), name="logout"),
     path("accounts/signup/", views.registrar_usuario, name="register"),
     path("accounts/profile/", views.profile, name="profile"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
