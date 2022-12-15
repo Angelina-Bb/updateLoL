@@ -16,7 +16,7 @@ def inicio(request):
 def about(request):
     return render(request,"AppLOL/about.html")
 
-def updates(request, slug):
+def updates(request):
     posts = Post.objects.all()
 
     return render(request,"AppLOL/actualizaciones.html", {'posts': posts})
