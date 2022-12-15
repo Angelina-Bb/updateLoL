@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>League of Update</title>
+        <title>{% block title %}{% endblock %}League of Update</title>
         <link rel="icon" type="image/x-icon" href='{% static "AppLOL/assets/img/HEIMER.jpg" %}' />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -32,7 +32,6 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'about'%}">About us</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'updates'%}">Actualizaciones</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'campeones'%}">Campeones</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'comunidad'%}">Comunidad</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'profile'%}">Perfil</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'chat'%}">Chat</a></li>
                     {% if not user.is_authenticated %}

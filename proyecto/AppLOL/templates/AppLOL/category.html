@@ -1,13 +1,13 @@
 {% extends 'AppLOL/base.html' %}
-{% block title %}Actualizaciones | {% endblock %}
+{% block title %}Categorias | {% endblock %}
 {% block contenido %}
 <!-- Experience-->
 <section class="resume-section" id="experience">
     <div class="resume-section-content">
-        <h2 class="mb-5">Actualizaciones</h2>
+        <h2 class="mb-5">{{ category.title }}</h2>
             <!-- Cuadros de texto -->
             <div class="row container" >
-                {% for post in posts %}
+                {% for post in category.posts.all %}
                     <div class="col-lg-6 mb-4">
                         <div class="card bg-light text-black">
                             <div class="card-body">
@@ -19,7 +19,7 @@
                                     </figure>
                                 {% endif %}
                                 <p>{{ post.body }}</p>
-                                <p><small><a href="{% url 'category_title' post.category.slug %}">{{ post.category }}</a></small></p>
+                                <p><small>{{ post.category }}</small></p>
                                 <div class="flex-shrink-0"><span class="text-primary">{{ post.creator }}</span></div>
                                 <div class="flex-shrink-0"><span class="text-primary">{{ post.created_at|date:'d-m-Y H:i' }}</span></div>
                                 <a href="{% url 'post_detail' post.slug %">Leer mas...</a>

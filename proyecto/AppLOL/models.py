@@ -31,7 +31,7 @@ class Comment(models.Model):
     def __str__(self):
         return self.username
 
-class Comunidad(models.Model):
+class Campeones(models.Model):
     title = models.CharField(max_length=200)
     subtitle = models.CharField(max_length=200)
     slug = models.SlugField()

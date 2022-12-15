@@ -1,13 +1,13 @@
 {% extends 'AppLOL/base.html' %}
+{% block title %}Login | {% endblock %}
+
 {% block contenido %}
-
-{% if errors %}
-    <p style="color:red">Errores en el inicio de sesión: {{errors}}</p>
-{% endif %}
-
 <section class="resume-section" id="interests">
     <div class="resume-section-content">
         <h2 class="mb-5">Login</h2>
+{% if errors %}
+    <p style="color:red">Errores en el inicio de sesión: {{errors}}</p>
+{% endif %}
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
@@ -17,5 +17,4 @@
         </form>
     </div>
 </section>
-
 {% endblock %}
