@@ -1,23 +1,22 @@
 {% extends 'AppLOL/base.html' %}
+{% block title %}Inicio | {% endblock %}
+
 {% block contenido %}
-        <!-- Page Content-->
-        <div class="container-fluid p-0">
-            <!-- About-->
-            <section class="resume-section" id="about">
-                <div class="resume-section-content">
-                    <h1 class="mb-0">
-                    LEAGUE OF
-                        <span class="text-primary">UPDATE</span>
-                    </h1>
-                    <div class="subheading mb-5">
-                        {{ mensaje }}
-                    </div>
-                    <p class="lead mb-5">Nos dedicamos a informar de forma mas detallada las actualizaciones mas recientes del MOBA en cuestion ya sea items y campeones hasta las modficaciones del mapa.</p>
-                    <div class="social-icons">
-                        <button class="enlace social-icon" role="link" onclick="window.location='https://github.com/AgustinLara/LEAGUEOFUBDATE.git'" ><i class="fab fa-github"></i></button>
-                        <button class="enlace social-icon" role="link" onclick="window.location='https://twitter.com/riotgames?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'" ><i class="fab fa-twitter"></i></button>
-                        <button class="enlace social-icon" role="link" onclick="window.location='https://www.facebook.com/RiotGames/'" ><i class="fab fa-facebook-f"></i></button>
-                    </div>
-            </section>
+<!-- About-->
+<section class="resume-section" id="about">
+    <div class="resume-section-content">
+        <h1 class="mb-0">
+        LEAGUE OF
+            <span class="text-primary">UPDATE</span>
+        </h1>
+        <div class="subheading mb-5">
+            {{ mensaje }}
         </div>
+        <p class="lead mb-5">Nos dedicamos a informar de forma mas detallada las actualizaciones mas recientes del MOBA en cuestion ya sea items y campeones hasta las modficaciones del mapa.</p>
+        <div class="social-icons">
+            <button class="enlace social-icon" role="link" onclick="window.location='https://github.com/AgustinLara/LEAGUEOFUBDATE.git'" ><i class="fab fa-github"></i></button>
+            <button class="enlace social-icon" role="link" onclick="window.location='https://twitter.com/riotgames?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'" ><i class="fab fa-twitter"></i></button>
+            <button class="enlace social-icon" role="link" onclick="window.location='https://www.facebook.com/RiotGames/'" ><i class="fab fa-facebook-f"></i></button>
+        </div>
+</section>
 {% endblock %}
