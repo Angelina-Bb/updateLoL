@@ -17,3 +17,14 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('username', 'email', 'body')
+
+class UserEditForm(UserCreationForm):
+    email = forms.EmailField(label="Correo electrónico")
+    password1 = forms.CharField(label="Password", widget=forms.PasswordInput, required=False)
+    password2 = forms.CharField(label="Confirme el password", widget=forms.PasswordInput, required=False)
+   
+    class Meta:
+        model = User
+        fields = ["email", "password1", "password2"]
+
+        help_texts = { "email": "Indica tu correo electrónico", "password1": "","password2": ""}

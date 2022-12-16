@@ -9,6 +9,9 @@ from django.contrib.auth import login, authenticate
 
 from AppLOL.forms import *
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
 
 def inicio(request):
     return render(request,"AppLOL/index.html")
@@ -44,7 +47,6 @@ def category(request, slug):
 
     return render(request, 'AppLOL/category.html', {'category': category})
 
-
 def campeones(request):
     return render(request,"AppLOL/campeones.html")
 
@@ -75,7 +77,6 @@ def login_request(request):
     form = AuthenticationForm()
     return render(request,'AppLOL/login.html' , {"form":form})
 
-
 def registrar_usuario(request):
 
     if request.method == "POST":
@@ -90,3 +91,30 @@ def registrar_usuario(request):
     formulario = UserRegisterForm()
     return render(request,"AppLOL/register.html", {"form": formulario})
 
+@login_required
+def editar_perfil(request):
+
+    usuario = request.user
+
+    if request.method == "POST":
+        # cargar informacion en el formulario
+        formulario = UserEditForm(request.POST)
+
+        # validacion del formulario
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+
+            # actualizacion del usuario con los datos del formulario
+            usuario.email = data["email"]
+            usuario.password1 = data["password1"]
+            usuario.password2 = data["password2"]
+
+            usuario.save()
+            return redirect("inicio")
+        else:
+            return render(request, "AppLOL/editar_perfil.html", {"form": formulario, "erros": formulario.errors})
+    else:
+        # crear formulario vacio
+        formulario = UserEditForm(initial = {"email": usuario.email})
+
+    return render(request, "AppLOL/editar_perfil.html", {"form": formulario})

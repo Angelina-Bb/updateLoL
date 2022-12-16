@@ -14,6 +14,7 @@ urlpatterns = [
     path("accounts/logout/", LogoutView.as_view(template_name="AppLol/logout.html"), name="logout"),
     path("accounts/signup/", views.registrar_usuario, name="register"),
     path("accounts/profile/", views.profile, name="profile"),
+    path("accounts/profile/editar", views.editar_perfil, name="editar_perfil"),
     path("<slug:category_slug>/<slug:slug>/", views.detail, name = "post_detail"),
     path("<slug:slug>/", views.category, name = "category_detail"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
