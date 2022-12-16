@@ -28,3 +28,6 @@ class UserEditForm(UserCreationForm):
         fields = ["email", "password1", "password2"]
 
         help_texts = { "email": "Indica tu correo electrónico", "password1": "","password2": ""}
+
+class AvatarForm(forms.Form):
+    imagen = forms.ImageField()

@@ -1,0 +1,28 @@
+{% extends 'AppLOL/base.html' %}
+{% block title %}Avatar | {% endblock %}
+{% block contenido %}
+
+
+{% if errors %}
+    <p>Errores encontrados</p>
+    <p style="color:red">{{errors}}</p>
+{% endif %}
+
+<section class="resume-section" id="skills">
+    <div class="resume-section-content">
+        <h2 class="mb-5">Agregar o Editar Avatar</h2>
+
+        <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        <input type="submit" value="Guardar">
+
+        </form>
+    </div>
+
+</section>
+
+
+{% endblock %}
+

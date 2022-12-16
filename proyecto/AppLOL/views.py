@@ -14,10 +14,20 @@ from django.contrib.auth.decorators import login_required
 
 
 def inicio(request):
-    return render(request,"AppLOL/index.html")
+    if request.user.is_authenticated:
+        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+        imagen_url = imagen_model.imagen.url
+    else:
+        imagen_url = ""
+    return render(request, "AppLOL/index.html", {"imagen_url": imagen_url})
 
 def about(request):
-    return render(request,"AppLOL/about.html")
+    if request.user.is_authenticated:
+        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+        imagen_url = imagen_model.imagen.url
+    else:
+        imagen_url = ""
+    return render(request, "AppLOL/about.html", {"imagen_url": imagen_url})
 
 def updates(request):
     posts = Post.objects.all()
@@ -48,13 +58,28 @@ def category(request, slug):
     return render(request, 'AppLOL/category.html', {'category': category})
 
 def campeones(request):
-    return render(request,"AppLOL/campeones.html")
+    if request.user.is_authenticated:
+        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+        imagen_url = imagen_model.imagen.url
+    else:
+        imagen_url = ""
+    return render(request, "AppLOL/campeones.html", {"imagen_url": imagen_url})
 
 def chat(request):
-    return render(request,"AppLOL/chat.html")
+    if request.user.is_authenticated:
+        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+        imagen_url = imagen_model.imagen.url
+    else:
+        imagen_url = ""
+    return render(request, "AppLOL/chat.html", {"imagen_url": imagen_url})
 
 def profile(request):
-    return render(request,"AppLOL/profile.html")
+    if request.user.is_authenticated:
+        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+        imagen_url = imagen_model.imagen.url
+    else:
+        imagen_url = ""
+    return render(request, "AppLOL/profile.html", {"imagen_url": imagen_url})
 
 def my_view(request):
     username = None
@@ -75,6 +100,7 @@ def login_request(request):
         else:
             return render(request, 'AppLOL/login.html', {"form": form})
     form = AuthenticationForm()
+    
     return render(request,'AppLOL/login.html' , {"form":form})
 
 def registrar_usuario(request):
@@ -118,3 +144,28 @@ def editar_perfil(request):
         formulario = UserEditForm(initial = {"email": usuario.email})
 
     return render(request, "AppLOL/editar_perfil.html", {"form": formulario})
+
+@login_required
+def agregar_avatar(request):
+    
+    if request.method == "POST":
+        
+        formulario = AvatarForm(request.POST, files=request.FILES)
+        print(request.FILES, request.POST)
+        
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+
+            usuario = request.user
+
+            avatar = Avatar(user=usuario, imagen=data["imagen"])
+            avatar.save()
+
+            return redirect("inicio")
+        
+        else:
+            return render(request, "AppLOL/agregar_avatar.html", {"form": formulario, "errors": formulario.errors })
+    
+    formulario = AvatarForm()
+
+    return render(request, "AppLOL/agregar_avatar.html", {"form": formulario})
