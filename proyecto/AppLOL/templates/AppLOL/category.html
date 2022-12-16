@@ -18,7 +18,7 @@
                                         <img src="{{ post.image.url }}">
                                     </figure>
                                 {% endif %}
-                                <p>{{ post.body }}</p>
+                                <p>{{ post.body|safe|truncatewords:"50"|linebreaks }}</p>
                                 <p><small>{{ post.category }}</small></p>
                                 <div class="flex-shrink-0"><span class="text-primary">{{ post.creator }}</span></div>
                                 <div class="flex-shrink-0"><span class="text-primary">{{ post.created_at|date:'d-m-Y H:i' }}</span></div>
@@ -26,7 +26,10 @@
                             </div>
                         </div>
                     </div>
-                    
+                    {% empty %}
+                        <div class="content">
+                            <p>No hay posts en esta categoria...</p>
+                        </div>
                 {% endfor %}
             </div>
     </div>

@@ -15,14 +15,14 @@
                                 <div class="subheading mb-3">{{ post.subtitle }}</div>
                                 {% if post.image %}
                                     <figure class="image">
-                                        <img src="{{ post.image.url }}">
+                                        <img src="{{ post.image.url }}" style="max-width: 100%;">
                                     </figure>
                                 {% endif %}
-                                <p>{{ post.body }}</p>
-                                <p><small><a href="{% url 'category_detail' post.slug %}">{{ post.category }}</a></small></p>
-                                <div class="flex-shrink-0"><span class="text-primary">{{ post.creator }}</span></div>
+                                <p>{{ post.body|safe|truncatewords:"50"|linebreaks }}</p>
+                                <p class="text-capitalize"><small><a href="{% url 'category_detail' post.slug %}">{{ post.category }}</a></small></p>
+                                <div class="flex-shrink-0 fw-bold"><span class="text-primary">{{ post.creator }}</span></div>
                                 <div class="flex-shrink-0"><span class="text-primary">{{ post.created_at|date:'d-m-Y H:i' }}</span></div>
-                                <a href="{% url 'post_detail' post.category.slug post.slug %}">Leer mas...</a>
+                                <a href="{% url 'post_detail' post.category.slug post.slug %}" class="text-dark fs-5">Leer mas...</a>
                             </div>
                         </div>
                     </div>
