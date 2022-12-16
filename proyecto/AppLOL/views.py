@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from .models import *
 # Login
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, authenticate
 
 from AppLOL.forms import *
 
@@ -40,7 +40,7 @@ def detail(request, category_slug, slug):
     return render(request,"AppLOL/detail.html", {'posts': posts, 'form': form})
 
 def category(request, slug):
-    category = get_object_or_404
+    category = get_object_or_404(Category, slug=slug)
 
     return render(request, 'AppLOL/category.html', {'category': category})
 
