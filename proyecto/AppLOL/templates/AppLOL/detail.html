@@ -7,7 +7,7 @@
     <div class="resume-section-content">
         <h2 class="mb-5">{{ post.title }}</h2>
             <!-- Cuadros de texto -->
-                                <h3 class="mb-0">{{ post.subtitle }}</h3>
+                                <h3 class="mb-0">{{ post.subtitle }}</h3><!-- revisar esto cuando funciones la vista -->
                                 <div class="subheading mb-3">{{ post.subtitle }}</div>
                                 {% if post.image %}
                                     <figure class="image">
@@ -18,7 +18,6 @@
                                 <p><small>{{ post.category }}</small></p>
                                 <div class="flex-shrink-0"><span class="text-primary">{{ post.creator }}</span></div>
                                 <div class="flex-shrink-0"><span class="text-primary">{{ post.created_at|date:'d-m-Y H:i' }}</span></div>
-                                <a href="{% url 'post_detail' post.category.slug post.slug %">Leer mas...</a>
                                 <!-- comentarios para comunidad -->
                                 <hr>
 

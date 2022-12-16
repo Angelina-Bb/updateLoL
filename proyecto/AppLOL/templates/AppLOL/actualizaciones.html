@@ -19,10 +19,10 @@
                                     </figure>
                                 {% endif %}
                                 <p>{{ post.body }}</p>
-                                <p><small><a href="{% url 'category_title' post.category.slug post.slug %}">{{ post.category }}</a></small></p>
+                                <p><small><a href="{% url 'category_detail' post.slug %}">{{ post.category }}</a></small></p>
                                 <div class="flex-shrink-0"><span class="text-primary">{{ post.creator }}</span></div>
                                 <div class="flex-shrink-0"><span class="text-primary">{{ post.created_at|date:'d-m-Y H:i' }}</span></div>
-                                <a href="{% url 'post_detail' post.slug %">Leer mas...</a>
+                                <a href="{% url 'post_detail' post.category.slug post.slug %}">Leer mas...</a>
                             </div>
                         </div>
                     </div>
