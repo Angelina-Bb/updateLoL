@@ -31,7 +31,6 @@ def about(request):
 
 def updates(request):
     posts = Post.objects.all()
-
     return render(request,"AppLOL/actualizaciones.html", {'posts': posts})
 
 def detail(request, category_slug, slug):

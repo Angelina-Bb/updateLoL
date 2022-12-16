@@ -37,7 +37,7 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'register'%}">Sign up</a></li>
                     {% else %}
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'chat'%}">Chat</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'profile'%}">Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'profile'%}">Perfil</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'logout'%}">Logout</a></li>
                         <p><p style="color:rgb(249, 249, 249)">¡Hola {{request.user.username}}!</p>
                         <center><img src="{{imagen_url}}" style="max-width: 55px;"></center>
