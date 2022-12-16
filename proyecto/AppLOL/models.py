@@ -10,6 +10,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+
 class Post(models.Model):
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -49,3 +50,12 @@ class Campeones(models.Model):
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to="avatares", null=True, blank=True)        
+
+class Chat(models.Model):
+    user_a = models.ForeignKey(User, related_name='user_a', on_delete=models.CASCADE)
+    user_b = models.ForeignKey(User, related_name='user_b', on_delete=models.CASCADE)
+    
+class Message(models.Model):
+    chat = models.ForeignKey(Chat, related_name='chat', on_delete=models.CASCADE)
+    message = models.TextField()
+    sent_at = models.DateTimeField(auto_now_add=True)

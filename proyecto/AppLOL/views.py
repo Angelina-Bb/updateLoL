@@ -69,9 +69,11 @@ def chat(request):
     if request.user.is_authenticated:
         imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
         imagen_url = imagen_model.imagen.url
+        # cargar todos los usuarios que no sea el autenticado
+        # cargar mensajes recibidos y segun el id de usuario autenticado
     else:
         imagen_url = ""
-    return render(request, "AppLOL/chat.html", {"imagen_url": imagen_url})
+    return render(request, "AppLOL/chat.html", {"imagen_url": imagen_url, "authUserId": request.user.id}) #"messages": messages
 
 def profile(request):
     if request.user.is_authenticated:
