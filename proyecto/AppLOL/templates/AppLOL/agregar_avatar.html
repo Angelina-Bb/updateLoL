@@ -11,14 +11,26 @@
 <section class="resume-section" id="skills">
     <div class="resume-section-content">
         <h2 class="mb-5">Agregar o Editar Avatar</h2>
+        <div class="mb-5">
+            {% if imagen_url %}
+            
+                <img src="{{MEDIA_URL}}{{ imagen_url }}" style="max-width: 200px;">
+            
+            {% else %}
+            <div>
+                <h3>No tenes avatar</h3>
+            </div>
+            {% endif %}
+        </div>
+        <div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
 
-        <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Guardar">
 
-        {{ form.as_p }}
-        <input type="submit" value="Guardar">
-
-        </form>
+            </form>
+        </div>
     </div>
 
 </section>

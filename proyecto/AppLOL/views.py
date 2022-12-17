@@ -94,8 +94,11 @@ def chat(request):
 
 def profile(request):
     if request.user.is_authenticated:
-        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
-        imagen_url = imagen_model.imagen.url
+        try:
+            imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+            imagen_url = imagen_model.imagen.url
+        except: 
+            imagen_url = ""    
     else:
         imagen_url = ""
     return render(request, "AppLOL/profile.html", {"imagen_url": imagen_url})
@@ -186,5 +189,13 @@ def agregar_avatar(request):
             return render(request, "AppLOL/agregar_avatar.html", {"form": formulario, "errors": formulario.errors })
     
     formulario = AvatarForm()
-
-    return render(request, "AppLOL/agregar_avatar.html", {"form": formulario})
+    
+    if request.user.is_authenticated:
+        try:
+            imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+            imagen_url = imagen_model.imagen.url
+        except: 
+            imagen_url = ""    
+    else:
+        imagen_url = ""
+    return render(request, "AppLOL/agregar_avatar.html", {"form": formulario, "imagen_url": imagen_url})
