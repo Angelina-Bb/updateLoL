@@ -5,6 +5,13 @@
 <section class="resume-section" id="skills">
     <div class="resume-section-content">
         <h2 class="mb-5">Chat</h2>
+        <div>
+            {% for msg in msgs %}
+                <div>
+                    {{ msg.message }}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 {% endblock %}
