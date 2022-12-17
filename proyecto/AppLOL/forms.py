@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class UserRegisterForm(UserCreationForm):
     username = forms.CharField(label="Usuario")
-    avatar = forms.ImageField()
+    avatar = forms.ImageField(label="Avatar")
     email = forms.EmailField(label="Correo electrónico")
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Confirme el password", widget=forms.PasswordInput)
@@ -22,7 +22,7 @@ class UserEditForm(UserCreationForm):
     email = forms.EmailField(label="Correo electrónico")
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput, required=False)
     password2 = forms.CharField(label="Confirme el password", widget=forms.PasswordInput, required=False)
-   
+    
     class Meta:
         model = User
         fields = ["email", "password1", "password2"]
