@@ -2,20 +2,19 @@
 
 {% block title %}{{ post.title }} | {% endblock %}
 
-{% block content %}
+{% block contenido %}
 <section class="resume-section" id="experience">
     <div class="resume-section-content">
         <h2 class="mb-5">{{ post.title }}</h2>
             <!-- Cuadros de texto -->
                                 <h3 class="mb-0">{{ post.subtitle }}</h3><!-- revisar esto cuando funciones la vista -->
-                                <div class="subheading mb-3">{{ post.subtitle }}</div>
                                 {% if post.image %}
                                     <figure class="image">
-                                        <img src="{{ post.image.url }}">
+                                        <img src="{{ post.image.url }}" style="max-width: 80%;">
                                     </figure>
                                 {% endif %}
                                 <p>{{ post.body }}</p>
-                                <p><small>{{ post.category }}</small></p>
+                                <h4>{{ post.category }}</h4>
                                 <div class="flex-shrink-0"><span class="text-primary">{{ post.creator }}</span></div>
                                 <div class="flex-shrink-0"><span class="text-primary">{{ post.created_at|date:'d-m-Y H:i' }}</span></div>
                                 <!-- comentarios para comunidad -->
@@ -32,13 +31,15 @@
                                         </div>
                                     </div>
                                 </form>
+                                <hr>
                                 {% for comment in post.comments.all %}
                                 <article class="media box">
                                     <div class="media-content">
-                                        <strong>{{ comment.name }}</strong> <small>{{ comment.created_at|timesince }} ago</small><br>
-                                        {{ comment.body }}
+                                        <h3>{{ comment.username }}</h3> <small>{{ comment.created_at|timesince }} ago</small><br>
+                                        <p>{{ comment.body }}</p>
                                     </div>
                                 </article>
+                                <hr>
                                 {% endfor %}
                             </div>
     </div>

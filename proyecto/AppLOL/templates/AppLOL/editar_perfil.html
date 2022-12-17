@@ -2,13 +2,15 @@
 {% block title %}Editar Perfil | {% endblock %}
 {% block contenido %}
 
-{% if errors %}
-    <p style="color:red">{{errors}}</p>
-{% endif %}
+
+
 
 <section class="resume-section" id="skills">
     <div class="resume-section-content">
         <h2 class="mb-5">Editar Usuario</h2>
+{% if errors %}
+    <p style="color:red">{{errors}}</p>
+{% endif %}
 
         <form method="post">
             {% csrf_token %}

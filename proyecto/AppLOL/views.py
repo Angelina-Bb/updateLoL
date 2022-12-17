@@ -47,9 +47,7 @@ def updates(request):
         imagen_url = ""
     return render(request,"AppLOL/actualizaciones.html", {'posts': posts, "imagen_url": imagen_url})
 
-def detail(request, category_slug, slug):
-    posts = Post.objects.all()
-
+def detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -63,7 +61,16 @@ def detail(request, category_slug, slug):
     else:
         form = CommentForm()
 
-    return render(request,"AppLOL/detail.html", {'posts': posts, 'form': form})
+    if request.user.is_authenticated:
+        try:
+            imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+            imagen_url = imagen_model.imagen.url
+        except: 
+            imagen_url = ""    
+    else:
+        imagen_url = ""
+
+    return render(request,"AppLOL/detail.html", {'post': post, 'form': form, "imagen_url": imagen_url})
 
 def category(request, slug):
     category = get_object_or_404(Category, slug=slug)

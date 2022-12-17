@@ -31,7 +31,6 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'inicio'%}">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'about'%}">About us</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'updates'%}">Actualizaciones</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'campeones'%}">Campeones</a></li>
                     {% if not user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'login'%}">Login</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'register'%}">Sign up</a></li>
