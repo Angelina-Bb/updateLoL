@@ -9,8 +9,9 @@
         {% if errors %}
             <p style="color:red">Errores en el registro de usuario: {{errors}}</p>
         {% endif %}
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
+
             {{ form.as_p }}
             {{ mensaje }}
             <input type="submit" value="Registrar Usuario">

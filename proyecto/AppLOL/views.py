@@ -15,24 +15,37 @@ from django.contrib.auth.decorators import login_required
 
 def inicio(request):
     if request.user.is_authenticated:
-        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
-        imagen_url = imagen_model.imagen.url
+        try:
+            imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+            imagen_url = imagen_model.imagen.url
+        except: 
+            imagen_url = ""    
     else:
         imagen_url = ""
     return render(request, "AppLOL/index.html", {"imagen_url": imagen_url})
 
 def about(request):
     if request.user.is_authenticated:
-        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
-        imagen_url = imagen_model.imagen.url
+        try:
+            imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+            imagen_url = imagen_model.imagen.url
+        except: 
+            imagen_url = ""    
     else:
         imagen_url = ""
     return render(request, "AppLOL/about.html", {"imagen_url": imagen_url})
 
 def updates(request):
     posts = Post.objects.all()
-
-    return render(request,"AppLOL/actualizaciones.html", {'posts': posts})
+    if request.user.is_authenticated:
+        try:
+            imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+            imagen_url = imagen_model.imagen.url
+        except: 
+            imagen_url = ""    
+    else:
+        imagen_url = ""
+    return render(request,"AppLOL/actualizaciones.html", {'posts': posts, "imagen_url": imagen_url})
 
 def detail(request, category_slug, slug):
     posts = Post.objects.all()
@@ -59,26 +72,33 @@ def category(request, slug):
 
 def campeones(request):
     if request.user.is_authenticated:
-        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
-        imagen_url = imagen_model.imagen.url
+        try:
+            imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+            imagen_url = imagen_model.imagen.url
+        except: 
+            imagen_url = ""    
     else:
         imagen_url = ""
     return render(request, "AppLOL/campeones.html", {"imagen_url": imagen_url})
 
 def chat(request):
     if request.user.is_authenticated:
-        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
-        imagen_url = imagen_model.imagen.url
-        # cargar todos los usuarios que no sea el autenticado
-        # cargar mensajes recibidos y segun el id de usuario autenticado
+        try:
+            imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+            imagen_url = imagen_model.imagen.url
+        except: 
+            imagen_url = ""    
     else:
         imagen_url = ""
     return render(request, "AppLOL/chat.html", {"imagen_url": imagen_url, "authUserId": request.user.id}) #"messages": messages
 
 def profile(request):
     if request.user.is_authenticated:
-        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
-        imagen_url = imagen_model.imagen.url
+        try:
+            imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+            imagen_url = imagen_model.imagen.url
+        except: 
+            imagen_url = ""    
     else:
         imagen_url = ""
     return render(request, "AppLOL/profile.html", {"imagen_url": imagen_url})
@@ -169,5 +189,13 @@ def agregar_avatar(request):
             return render(request, "AppLOL/agregar_avatar.html", {"form": formulario, "errors": formulario.errors })
     
     formulario = AvatarForm()
-
-    return render(request, "AppLOL/agregar_avatar.html", {"form": formulario})
+    
+    if request.user.is_authenticated:
+        try:
+            imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+            imagen_url = imagen_model.imagen.url
+        except: 
+            imagen_url = ""    
+    else:
+        imagen_url = ""
+    return render(request, "AppLOL/agregar_avatar.html", {"form": formulario, "imagen_url": imagen_url})

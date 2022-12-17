@@ -4,13 +4,30 @@
 {% block contenido %}
 <section class="resume-section" id="skills">
     <div class="resume-section-content">
-        <h2 class="mb-5">Chat</h2>
-        <div>
-            {% for msg in msgs %}
-                <div>
-                    {{ msg.message }}
+        <h2 class="mb-2">Chat</h2>
+        <div class="row container">                    
+            <div class="col-lg-8 mb-4">
+                <div class="card bg-light text-black">
+                    <div class="card-body">
+                        <div style="height: 600px;"></div>
+                        {% for msg in msgs %}
+                        <div>
+                            {{ msg.message }}
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
-            {% endfor %}
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card bg-light text-black">
+                    <div class="card-body">
+                        <div></div>
+                        {% for msg in msgs %}
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

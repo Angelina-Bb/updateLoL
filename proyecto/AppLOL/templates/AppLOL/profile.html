@@ -4,9 +4,26 @@
 <section class="resume-section" id="experience">
     <div class="resume-section-content">
         <h2 class="mb-5">Perfil</h2>
-        <div>
+        <div class="mb-4">
+            <h3>Hola! Como estas {{request.user.username}}?</h3>
+            <p>Tu email actual es: {{request.user.email}}</p>
+            <p>Necesitas modificar tu contraseña?</p>
             <button class="nav-item"><a class="nav-link " href="{% url 'editar_perfil'%}">Editar Perfil</a></button>
-            <button class="nav-item"><a class="nav-link " href="{% url 'agregar_avatar'%}">Editar Avatar</a></button>
+        </div>
+        <div>
+            <p>Este es tu avatar:</p>
+            {% if imagen_url %}
+            
+            <img src="{{MEDIA_URL}}{{ imagen_url }}" style="max-width: 200px;">
+        
+            {% else %}
+            <div>
+            <h3>No tenes avatar, sube uno y luce tu perfil</h3>
+            </div>
+            {% endif %}
+            <div>
+                <button class="nav-item"><a class="nav-link " href="{% url 'agregar_avatar'%}">Editar Avatar</a></button>
+            </div>
         </div>    
     </div>
 
