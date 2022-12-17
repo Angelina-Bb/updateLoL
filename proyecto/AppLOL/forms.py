@@ -5,13 +5,13 @@ from django.contrib.auth.models import User
 
 class UserRegisterForm(UserCreationForm):
     username = forms.CharField(label="Usuario")
+    avatar = forms.ImageField()
     email = forms.EmailField(label="Correo electrónico")
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Confirme el password", widget=forms.PasswordInput)
-    
     class Meta:
         model = User
-        fields = ["username", "email", "password1", "password2"]
+        fields = ["username", "avatar", "email", "password1", "password2"]
 
 class CommentForm(forms.ModelForm):
     class Meta:
