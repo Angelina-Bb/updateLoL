@@ -2,7 +2,7 @@
 
 Entrega final para el curso de Python en Coderhouse.
 
-#Link del video demostración: https://youtu.be/CUMq1ABjj3U
+# Link del video demostración: https://youtu.be/CUMq1ABjj3U
 
 ## Alumnos: Angelina Balatorre y Ariel Fernandez.
 
