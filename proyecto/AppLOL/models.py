@@ -62,7 +62,7 @@ class Message(models.Model):
     room = models.CharField(max_length=1000000)
 
     def __str__(self):
-        return self.room
+        return self.user
 
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

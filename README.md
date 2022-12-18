@@ -6,9 +6,9 @@ Entrega final para el curso de Python en Coderhouse.
 
 ### Angelina Balatorre: 
 
-Encargada de armar la estructura de los templates, crud
+Encargada de estructura y funcionamiento actualizaciones, chat y about us y ajustes esteticos. Ademas de ajustes en errores.
 
 ### Ariel Fernandez: 
 
-Se encargo del armado y funcionamiento del login, registro, logout, perfiles
+Se encargo de la estructura y funcionamiento del login, registro, logout, perfiles, administracion de la informacion e imagenes y solucion de problemas.
 
