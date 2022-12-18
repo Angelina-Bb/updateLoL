@@ -11,7 +11,7 @@
         <title>{% block title %}{% endblock %}League of Update</title>
         <link rel="icon" type="image/x-icon" href='{% static "AppLOL/assets/img/HEIMER.jpg" %}' />
         <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
@@ -35,11 +35,11 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'login'%}">Login</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'register'%}">Sign up</a></li>
                     {% else %}
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'chat'%}">Chat</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'home_chat' %}">Chat</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'profile'%}">Perfil</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="{% url 'logout'%}">Logout</a></li>
                         <p><p style="color:rgb(249, 249, 249)">¡Hola {{request.user.username}}!</p>
-                        <center><img src="{{ imagen_url }}" style="max-width: 55px;"></center>
+                        <center><span class="d-none d-lg-block"><img class="img-fluid rounded-circle mx-auto mb-2" src='{{ imagen_url }}' alt="..." style="max-width: 55px;" /></span></center>
                     {% endif %}
                 </ul>
             </div>
@@ -51,6 +51,26 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src='{% static "AppLOL/js/scripts.js" %}></script>
+        <script src={% static "AppLOL/js/scripts.js" %}></script>
     </body>
+    <script type="text/javascript">
+        $(document).on('submit','#post-form',function(e){
+          e.preventDefault();
+      
+          $.ajax({
+            type:'POST',
+            url:'/send',
+            data:{
+                username:$('#username').val(),
+                room_id:$('#room_id').val(),
+                message:$('#message').val(),
+              csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function(data){
+               //alert(data)
+            }
+          });
+          document.getElementById('message').value = ''
+        });
+      </script>
 </html>

@@ -1,10 +1,27 @@
 {% extends 'AppLOL/base.html' %}
+{% load static %}
 {% block title %}About | {% endblock %}
 {% block contenido %}
 <section class="resume-section" id="experience">
     <div class="resume-section-content">
         <h2 class="mb-5">About us</h2>
-        <span class="d-none d-lg-block"><img class="img-fluid img-HEIMER rounded-circle mx-auto mb-2" src='{% static "AppLOL\assets\img\foto_ariel.jpg" %}' alt="..." /></span>
+        <div class="row container" >
+            <div class="col-lg-6 mb-4">
+                <center><span class="d-none d-lg-block"><img class="img-fluid rounded-circle mx-auto mb-2" src='{% static "AppLOL\assets\img\foto_ariel2.jpg" %}' alt="..." /></span>
+                <h4>Ariel Fernandez</h4>
+                <p>¡Hola! Mi nombre es Ariel, tengo 27 años y soy de Uruguay.</p>
+                <p>Me recibí de contador público en 2018 y desde entonces busco diferentes herramientas que me ayuden a mejorar en mi carrera y a abrirme a nuevas posibilidades, por lo cual decidí adentrarme en el mundo de la programación.</p>
+                <p>Un mundo apasionante que te habilita a realizar todo tipo de ideas que se te ocurran.</p>
+                <p>¡Espero disfruten la página!</p></center>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <center><span class="d-none d-lg-block"><img class="img-fluid rounded-circle mx-auto mb-2" src='{% static "AppLOL\assets\img\foto_angy.jpeg" %}' alt="..." /></span>
+                <h4>Angelina Balatorre</h4>
+                <p>¡Hola! Mi nombre es Angelina y tengo 28 años.</p>
+                <p>Soy estudiante de Ingenieria informatica y actualmente me encuentro estudiando programacion para poder adquirir nuevas habilidades y poder avanzar profesionalmente.</p>
+                <p>Descubri este maravilloso mundo donde todo es posible, aunque no sepas como.</p></center>
+            </div>
+        </div>
     </div>
 </section>
 

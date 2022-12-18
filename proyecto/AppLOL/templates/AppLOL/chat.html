@@ -4,27 +4,78 @@
 {% block contenido %}
 <section class="resume-section" id="skills">
     <div class="resume-section-content">
-        <h2 class="mb-2">Chat</h2>
+        <h2 class="mb-2">{{room}} Chat</h2>
         <div class="row container">                    
-            <div class="col-lg-8 mb-4">
+            <div class="col-lg-12 mb-4">
                 <div class="card bg-light text-black">
                     <div class="card-body">
                         <div style="height: 600px;"></div>
-                        {% for msg in msgs %}
-                        <div>
-                            {{ msg.message }}
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-                <div class="card bg-light text-black">
-                    <div class="card-body">
-                        <div></div>
-                        {% for msg in msgs %}
-
-                        {% endfor %}
+                        <script>
+                            $(document).ready(function(){
+                            
+                            setInterval(function(){
+                                $.ajax({
+                                    type: 'GET',
+                                    url : "/getMessages/{{room}}/",
+                                    success: function(response){
+                                        console.log(response);
+                                        $("#display").empty();
+                                        for (var key in response.messages)
+                                        {
+                                            var temp="<div class='container darker'><b>"+response.messages[key].user+"</b><p>"+response.messages[key].value+"</p><span class='time-left'>"+response.messages[key].date+"</span></div>";
+                                            $("#display").append(temp);
+                                        }
+                                    },
+                                    error: function(response){
+                                        alert('An error occured')
+                                    }
+                                });
+                            },1000);
+                            })
+                            </script>
+                            <div class="container">
+                                <style>
+                                input[type=text], select {
+                                width: 100%;
+                                padding: 12px 20px;
+                                margin: 8px 0;
+                                display: inline-block;
+                                border: 1px solid #ccc;
+                                border-radius: 4px;
+                                box-sizing: border-box;
+                                }
+                            
+                                input[type=submit] {
+                                width: 100%;
+                                background-color: #4CAF50;
+                                color: white;
+                                padding: 14px 20px;
+                                margin: 8px 0;
+                                border: none;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                }
+                            
+                                input[type=submit]:hover {
+                                background-color: #45a049;
+                                }
+                            
+                                div {
+                                border-radius: 5px;
+                                background-color: #f2f2f2;
+                                padding: 20px;
+                                }
+                                </style>
+                            
+                                <form id="post-form">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="username" id="username" value="{{username}}"/>
+                                    <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}"/>
+                                    <input type="text" name="message" id="message" width="100px" />
+                                    <input type="submit" value="Send">
+                                </form>
+                            </div>
+                            
                     </div>
                 </div>
             </div>

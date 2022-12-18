@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 
 # Updates
 from .models import *
@@ -88,16 +88,6 @@ def campeones(request):
         imagen_url = ""
     return render(request, "AppLOL/campeones.html", {"imagen_url": imagen_url})
 
-def chat(request):
-    if request.user.is_authenticated:
-        try:
-            imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
-            imagen_url = imagen_model.imagen.url
-        except: 
-            imagen_url = ""    
-    else:
-        imagen_url = ""
-    return render(request, "AppLOL/chat.html", {"imagen_url": imagen_url, "authUserId": request.user.id}) #"messages": messages
 
 def profile(request):
     if request.user.is_authenticated:
@@ -109,6 +99,49 @@ def profile(request):
     else:
         imagen_url = ""
     return render(request, "AppLOL/profile.html", {"imagen_url": imagen_url})
+
+# views del chat
+
+def home(request):
+    return render(request, 'home_chat.html')
+
+def room(request, room):
+    username = request.GET.get('username')
+    room_details = Room.objects.get(name=room)
+    return render(request, 'room.html', {
+        'username': username,
+        'room': room,
+        'room_details': room_details
+    })
+
+def checkview(request):
+    room = request.POST['room_name']
+    username = request.POST['username']
+
+    if Room.objects.filter(name=room).exists():
+        return redirect('/'+room+'/?username='+username)
+    else:
+        new_room = Room.objects.create(name=room)
+        new_room.save()
+        return redirect('/'+room+'/?username='+username)
+
+def send(request):
+    message = request.POST['message']
+    username = request.POST['username']
+    room_id = request.POST['room_id']
+
+    new_message = Message.objects.create(value=message, user=username, room=room_id)
+    new_message.save()
+    return HttpResponse('Mensaje enviado')
+
+def getMessages(request, room):
+    room_details = Room.objects.get(name=room)
+
+    messages = Message.objects.filter(room=room_details.id)
+    return JsonResponse({"messages":list(messages.values())})
+
+# --------------------------
+
 
 def my_view(request):
     username = None

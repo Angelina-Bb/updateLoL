@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 
 class Category(models.Model):
     title = models.CharField(max_length=200)
@@ -47,15 +48,16 @@ class Campeones(models.Model):
     class Meta:
         ordering = ('-created_at',)
 
+class Room(models.Model):
+    name = models.CharField(max_length=1000)
+
+class Message(models.Model):
+    value = models.CharField(max_length=1000000)
+    date = models.DateTimeField(default=datetime.now, blank=True)
+    user = models.CharField(max_length=1000000)
+    room = models.CharField(max_length=1000000)
+
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to="avatares", null=True, blank=True)        
 
-class Chat(models.Model):
-    user_a = models.ForeignKey(User, related_name='user_a', on_delete=models.CASCADE)
-    user_b = models.ForeignKey(User, related_name='user_b', on_delete=models.CASCADE)
-    
-class Message(models.Model):
-    chat = models.ForeignKey(Chat, related_name='chat', on_delete=models.CASCADE)
-    message = models.TextField()
-    sent_at = models.DateTimeField(auto_now_add=True)
