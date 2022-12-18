@@ -18,6 +18,7 @@ urlpatterns = [
     path('<str:room>/', views.room, name='room'),
     path("inicio-chat/checkview", views.checkview, name="checkview"),
     path("inicio-chat/send", views.send, name="send"),
+    path('getMessages/<str:room>/', views.getMessages, name='getMessages'),
     path("<slug:slug>/", views.detail, name = "post_detail"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
