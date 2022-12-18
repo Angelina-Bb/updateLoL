@@ -14,10 +14,10 @@ urlpatterns = [
     path("accounts/profile/", views.profile, name="profile"),
     path("accounts/profile/avatar/", views.agregar_avatar, name="agregar_avatar"),
     path("accounts/profile/editar/", views.editar_perfil, name="editar_perfil"),
-    path("<slug:slug>/", views.detail, name = "post_detail"),
-    path("chat/", views.home, name="home_chat"),
+    path("inicio-chat/", views.home, name="inicio_chat"),
     path('<str:room>/', views.room, name='room'),
-    path("checkview", views.checkview, name="checkview"),
-    path("send", views.send, name="send"),
+    path("inicio-chat/checkview", views.checkview, name="checkview"),
+    path("inicio-chat/send", views.send, name="send"),
+    path("<slug:slug>/", views.detail, name = "post_detail"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

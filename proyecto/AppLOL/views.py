@@ -77,18 +77,6 @@ def category(request, slug):
 
     return render(request, 'AppLOL/category.html', {'category': category})
 
-def campeones(request):
-    if request.user.is_authenticated:
-        try:
-            imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
-            imagen_url = imagen_model.imagen.url
-        except: 
-            imagen_url = ""    
-    else:
-        imagen_url = ""
-    return render(request, "AppLOL/campeones.html", {"imagen_url": imagen_url})
-
-
 def profile(request):
     if request.user.is_authenticated:
         try:
@@ -100,47 +88,6 @@ def profile(request):
         imagen_url = ""
     return render(request, "AppLOL/profile.html", {"imagen_url": imagen_url})
 
-# views del chat
-
-def home(request):
-    return render(request, 'home_chat.html')
-
-def room(request, room):
-    username = request.GET.get('username')
-    room_details = Room.objects.get(name=room)
-    return render(request, 'room.html', {
-        'username': username,
-        'room': room,
-        'room_details': room_details
-    })
-
-def checkview(request):
-    room = request.POST['room_name']
-    username = request.POST['username']
-
-    if Room.objects.filter(name=room).exists():
-        return redirect('/'+room+'/?username='+username)
-    else:
-        new_room = Room.objects.create(name=room)
-        new_room.save()
-        return redirect('/'+room+'/?username='+username)
-
-def send(request):
-    message = request.POST['message']
-    username = request.POST['username']
-    room_id = request.POST['room_id']
-
-    new_message = Message.objects.create(value=message, user=username, room=room_id)
-    new_message.save()
-    return HttpResponse('Mensaje enviado')
-
-def getMessages(request, room):
-    room_details = Room.objects.get(name=room)
-
-    messages = Message.objects.filter(room=room_details.id)
-    return JsonResponse({"messages":list(messages.values())})
-
-# --------------------------
 
 
 def my_view(request):
@@ -239,3 +186,45 @@ def agregar_avatar(request):
     else:
         imagen_url = ""
     return render(request, "AppLOL/agregar_avatar.html", {"form": formulario, "imagen_url": imagen_url})
+
+# views del chat
+
+def home(request):
+    return render(request, 'AppLOL/inicio_chat.html')
+
+def room(request, room):
+    username = request.GET.get('username')
+    room_details = Room.objects.get(room=room)
+    return render(request, 'AppLol/chat.html', {
+        'username': username,
+        'room': room,
+        'room_details': room_details
+    })
+
+def checkview(request):
+    room = request.POST['room_name']
+    username = request.POST['username']
+
+    if Room.objects.filter(room=room).exists():
+        return redirect('/'+room+'/?username='+username)
+    else:
+        new_room = Room.objects.create(room=room)
+        new_room.save()
+        return redirect('/'+room+'/?username='+username)
+
+def send(request):
+    message = request.POST['message']
+    username = request.POST['username']
+    room_id = request.POST['room_id']
+
+    new_message = Message.objects.create(value=message, user=username, room=room_id)
+    new_message.save()
+    return HttpResponse('Mensaje enviado')
+
+def getMessages(request, room):
+    room_details = Room.objects.get(room=room)
+
+    messages = Message.objects.filter(room=room_details.id)
+    return JsonResponse({"messages":list(messages.values())})
+
+# --------------------------

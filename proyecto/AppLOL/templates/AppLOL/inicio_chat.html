@@ -9,14 +9,13 @@
             <div class="col-lg-12 mb-4">
                 <div class="card bg-light text-black">
                     <div class="card-body">
-                        <div style="height: 600px;"></div>
                         <form id="post-form" method="POST" action="checkview">
                             {% csrf_token %}
-                            <label>Room Name</label>
+                            <label>Sala de chat</label>
                             <input type="text" name="room_name" id="room_name" width="100px" />
                             <label>Username</label>
                             <input type="text" name="username" id="username" width="100px" />
-                            <input type="submit" value="Enter Room">
+                            <input type="submit" value="Entrar a la sala">
                         </form>
                     </div>
                 </div>
